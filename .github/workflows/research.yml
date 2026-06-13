@@ -1,0 +1,54 @@
+# .github/workflows/research.yml
+name: Apex Lead Research | By Idincode
+
+on:
+  workflow_dispatch:  # Manual trigger dari GitHub Actions UI
+  schedule:
+    # Setiap Senin jam 02:00 UTC (= 09:00 WIB)
+    - cron: '0 2 * * 1'
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: Run pipeline
+        env:
+          PAGESPEED_API_KEY: ${{ secrets.PAGESPEED_API_KEY }}
+          IDINCODE_API: ${{ secrets.IDINCODE_API }}
+        run: python run.py
+
+      - name: Upload CSV artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: leads-csv-${{ github.run_number }}
+          path: output/*.csv
+          retention-days: 30
+
+      - name: Commit CSV results (optional)
+        if: github.event_name == 'schedule'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/*.csv
+          git diff --staged --quiet || git commit -m "chore: weekly lead research $(date +%Y-%m-%d)"
+          git push
