@@ -1,0 +1,169 @@
+Claude Opus 4.7
+POST
+/claude/v1/messages
+Streaming Support
+When stream: true is set in the request, the API returns responses as server-sent events (SSE). Claude tool calling responses stream tool_use blocks and input_json_delta fragments.
+Streaming Response Format:
+Content-Type: text/event-stream
+Event names include message_start, content_block_start, content_block_delta, message_delta, and message_stop
+Tool calls are emitted as tool_use content blocks
+Final stop reason is often tool_use for function-calling requests
+Features
+Standard chat with messages.
+Function calling with tools and input_schema.
+Optional stream response with Claude events.
+Optional project-specific thinking flag.
+Request Notes
+Put the current model name in the model field.
+Use messages for conversation history.
+Use tools to declare callable functions.
+Set stream to true for SSE output.
+Authentication
+Use the auth configuration for X-Api-Key and anthropic-version. Do not add them as regular request parameters.
+Request
+Authorization
+Bearer Token
+Provide your bearer token in the Authorization header when making requests to protected resources.
+Example:
+Authorization: Bearer ********************
+Body Params
+application/json
+Required
+model
+enum<string> 
+required
+Model name. It must match the current document.
+Value:
+claude-opus-4-7
+Example:
+claude-opus-4-7
+messages
+array [object] 
+required
+Conversation messages in chronological order.
+>= 1 items
+role
+enum<string> 
+required
+Message role.
+Allowed values:
+user
+assistant
+Example:
+user
+content
+required
+Message content.
+tools
+array [object] 
+optional
+Optional callable tools. Each tool includes a name, description, and input_schema.
+name
+string 
+required
+Function name.
+Example:
+get_current_weather
+description
+string 
+required
+Human-readable function description.
+Example:
+Get the current weather in a given location
+input_schema
+object 
+required
+JSON Schema for function parameters.
+Example:
+{"type":"object","properties":{"location":{"type":"string","description":"The city and state, e.g. Boston, MA"}},"required":["location"]}
+thinkingFlag
+boolean 
+optional
+Project-specific thinking flag used by the current Claude adapter.
+Example:
+true
+stream
+boolean 
+optional
+If set to true, the response is returned as an SSE stream.
+Default:
+true
+Example:
+false
+max_tokens
+number 
+optional
+Optional Claude output token limit. Leave empty to use the default of 4096.
+Default:
+4096
+Example:
+4096
+
+curl --location 'https://api.kie.ai/claude/v1/messages' \
+--header 'Authorization: Bearer <token>' \
+--header 'Content-Type: application/json' \
+--data '{
+    "model": "claude-opus-4-7",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is the weather like in Boston today?"
+        }
+    ],
+    "tools": [
+        {
+            "name": "get_current_weather",
+            "description": "Get the current weather in a given location",
+            "input_schema": {
+                "type": "object",
+                "properties": {
+                    "location": {
+                        "type": "string",
+                        "description": "The city and state, e.g. Boston, MA"
+                    }
+                },
+                "required": [
+                    "location"
+                ]
+            }
+        }
+    ],
+    "thinkingFlag": true,
+    "stream": false,
+    "max_tokens": 4096
+
+
+    {
+    "role": "assistant",
+    "usage": {
+        "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+        },
+        "output_tokens": 57,
+        "service_tier": "standard",
+        "cache_creation_input_tokens": 0,
+        "input_tokens": 600,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "not_available"
+    },
+    "stop_reason": "tool_use",
+    "model": "claude-opus-4-5-20251101",
+    "id": "msg_01VSoxV4a8YWB3DBh9TdM63W",
+    "credits_consumed": 0.25,
+    "type": "message",
+    "content": [
+        {
+            "input": {
+                "location": "Beijing, China"
+            },
+            "caller": {
+                "type": "direct"
+            },
+            "name": "get_current_weather",
+            "id": "toolu_018gdqs2FHxrRjQHLZv1qvbF",
+            "type": "tool_use"
+        }
+    ]
+}
+}'

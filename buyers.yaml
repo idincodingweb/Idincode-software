@@ -1,0 +1,31 @@
+# buyers.yaml
+# Konfigurasi untuk find_buyer.py
+# Tujuan: cari decision maker (CEO/Founder/Owner/Partner) di agency
+# yang kemungkinan besar mau BELI data leads lo.
+#
+# Setiap niche = 1 query ke search engine.
+# Tambahin atau hapus sesuai kebutuhan.
+#
+# ⚠️ v3.1: email pattern guessing/inference DIHAPUS.
+# Software cuma keep email yang LITERAL muncul di page (confidence=1.0).
+# Kalau agency gak nampilin email decision maker di page, agency itu di-skip.
+
+defaults:
+  # Default country untuk search (US/UK/AU/CA/global).
+  country: US
+  # Max agency per niche (DDG rate-limit safe).
+  max_agencies_per_niche: 30
+  # Max decision maker per agency.
+  max_persons_per_agency: 5
+  # Concurrency limit (HTTP).
+  max_concurrent: 4
+
+niches:
+  - keyword: "dental marketing agency"
+    country: US
+  - keyword: "healthcare marketing agency"
+    country: US
+  - keyword: "medical marketing agency"
+    country: US
+  - keyword: "dental seo agency"
+    country: US

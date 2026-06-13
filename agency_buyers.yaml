@@ -1,0 +1,54 @@
+## agency_buyers.yaml
+## Konfigurasi untuk find_agency_buyers.py
+##
+## Tujuan: cari OWNER agency kecil / FREELANCER yang BELI data leads lo.
+## Beda sama buyers.yaml (besar / mid agency) — di sini target:
+##   - small agency (2-20 orang) niche dental / SEO / PPC
+##   - freelancer SEO / Google Ads
+##   - solo consultant marketing healthcare
+##   - aktif di Reddit (r/SEO, r/PPC, r/dentistry, r/marketing, dst)
+##
+## Output: output/agency_buyers/agency_buyers_<ts>.csv
+##   kolom: source (website|reddit), website, email, phone, ceo_name, niche, ...
+##
+## Rule v3.1+: email LITERAL only (no guessing). Phone scraped dari tel:/regex.
+
+defaults:
+  country: US
+  max_agencies_per_niche: 25
+  max_persons_per_agency: 3
+  max_concurrent: 4
+  # Reddit hunter
+  enable_reddit: true
+  reddit_post_limit_per_query: 25
+
+niches:
+  ## Small agency / boutique
+  - keyword: "small dental marketing agency"
+    country: US
+  - keyword: "boutique dental seo agency"
+    country: US
+  - keyword: "dental ppc agency small team"
+    country: US
+  ## Freelancer
+  - keyword: "freelance dental seo consultant"
+    country: US
+  - keyword: "freelance google ads dental"
+    country: US
+  ## Solo / niche
+  - keyword: "solo seo consultant healthcare"
+    country: US
+
+reddit:
+  ## Subreddit + query. Public JSON, no auth.
+  queries:
+    - subreddit: SEO
+      query: "agency owner OR freelancer OR consultant dental"
+    - subreddit: PPC
+      query: "agency dental OR healthcare"
+    - subreddit: dentistry
+      query: "marketing agency OR SEO"
+    - subreddit: marketing
+      query: "small agency dental owner"
+    - subreddit: agency
+      query: "dental healthcare"

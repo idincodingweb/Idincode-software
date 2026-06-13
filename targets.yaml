@@ -1,0 +1,124 @@
+targets:
+  # NICHE 1: COSMETIC DENTISTRY (Veneers, Smile Design, Smile Makeovers)
+  - domain: lowenberglituchykantor.com
+    location: New York
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: dtsmiledesign.com
+    location: New York
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: nyccd.com
+    location: New York
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: livingartdentistry.com
+    location: New York
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: beverlyhillsdentistry.com
+    location: Los Angeles
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: rifkinraanan.com
+    location: Los Angeles
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: beverlyhillscosmeticdentist.com
+    location: Los Angeles
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: mysmiledesignmiami.com
+    location: Miami
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: smiledesignmia.com
+    location: Miami
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: premierdentistrychicago.com
+    location: Chicago
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: chicagobeautifulsmiles.com
+    location: Chicago
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: dallasdentalspa.com
+    location: Dallas
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: cowdincosmeticdentistry.com
+    location: Dallas
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: sfveneer.com
+    location: San Francisco
+    niche: cosmetic_dentistry
+    category: premium_clinic
+  - domain: artofcosmeticdentistry.com
+    location: Atlanta
+    niche: cosmetic_dentistry
+    category: premium_clinic
+
+  # NICHE 2: WEIGHT LOSS / MEDSPA / GLP-1 CLINICS (Ozempic/Semaglutide)
+  - domain: trifectamedspanyc.com
+    location: New York
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: skinneymedspa.com
+    location: New York
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: nysurgicalarts.com
+    location: New York
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: drseansatey.com
+    location: Los Angeles
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: motykiemedspa.com
+    location: Los Angeles
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: cienegaspa.com
+    location: Los Angeles
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: beyondhealthmedspa.com
+    location: Miami
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: premiumhealthcare.com
+    location: Miami
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: aeris.co
+    location: Miami
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: bluetreehealthtx.com
+    location: Austin
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: injectco.com
+    location: Dallas
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: thrivemddallas.com
+    location: Dallas
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: skinbarandstudio.com
+    location: Chicago
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: bettermedspa.com
+    location: Chicago
+    niche: weight_loss_medspa
+    category: premium_clinic
+  - domain: swancenteratlanta.com
+    location: Atlanta
+    niche: weight_loss_medspa
+    category: premium_clinic
